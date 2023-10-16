@@ -1,5 +1,5 @@
 import algo.AlgoClassification;
-import algo.PlusProche;
+import algo.*;
 import donnees.ChargementData;
 import donnees.Donnees;
 import donnees.Imagette;
@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Statistiques {
     public static void main(String[] args) throws IOException {
-        AlgoClassification algo = new PlusProche();
+        AlgoClassification algo = new kNN(4);
         Donnees testData = new ChargementData("data/t10k-images.idx3-ubyte", "data/t10k-labels.idx1-ubyte", 100).donnees;
         int nbCorrect = 0;
         for (Imagette img : testData.getImg()) {
