@@ -16,7 +16,7 @@ public class kNN extends AlgoClassification{
     public int predict(Imagette img) {
         // recuperer les imagettes
         ArrayList<Imagette> data = trainData.getImg();
-        Map<Integer, Integer> mins = new HashMap<>();
+        TreeMap<Integer, Integer> mins = new TreeMap<>();
         for (int i = 0; i < this.k; i++) {
             Imagette imagette = data.get(i);
             int dist = imagette.dist(img);
@@ -27,7 +27,7 @@ public class kNN extends AlgoClassification{
         for (int i = this.k; i < data.size(); i++) {
             Imagette imagette = data.get(i);
             int dist = imagette.dist(img);
-            int max = Collections.max(mins.keySet());
+            int max = mins.lastKey();
             if (dist < max) {
                 mins.remove(max);
                 mins.put(dist, imagette.getLabel());
